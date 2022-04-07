@@ -77,8 +77,9 @@ class Imagen {
     imagenID;
     fechaHora;
     duracion;
-    objeto;
+    objeto;// este objeto seria la imagen o video en base64
     descripcion;
+    //Constructor de la clase
     constructor(pfechaHora, pduracion, pobjeto, pdescripcion) {
         this.imagenID = Math.trunc(Math.random() * 10000);
         this.fechaHora = pfechaHora;
@@ -96,7 +97,9 @@ class FechaEvento {
     horaHasta;
     Locacion;
     observacion;
-    imagenes = new Array();
+    imagenes = new Array(); //este array tiene la colección de imagenes correspondientes a esa fecha de evento
+
+    //Constructor de la clase
     constructor(phoraDesde, phoraHasta, pLocacion, pobservacion) {
         this.fecha = new Date();
         this.horaDesde = phoraDesde;
@@ -122,7 +125,9 @@ class Cliente {
     clienteID;
     nombreApellido;
     cuit;
-    eventos = new Array();
+    eventos = new Array(); // array para la colección de los eventos del cliente.
+
+    //Constructor de la clase
     constructor(pNombreApellido, pcuit) {
         this.clienteID = Math.trunc(Math.random() * 10000);
         this.NombreApellido = pNombreApellido;
@@ -157,7 +162,7 @@ class Evento {
     locacion;
     cliente;
     fechas = new Array();
-    presupuestos = new Array();
+    presupuestos = new Array();//Array para la colección de los presupuestos previos al evento.
 
     //Constructor
     constructor(pprecio, pfechaContratacion, plocacion) {

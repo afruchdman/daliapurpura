@@ -29,7 +29,7 @@ function login(pusuario, pcontrasenia) {
 function recuperoEvento() {
     miCliente = new Cliente();
     miCliente.getByCliente(1);
-    console.log(MostrarEvento(miCliente))
+    alert(MostrarEvento(miCliente))
 }
 
 //Funcion para cargar y mostarr evento
