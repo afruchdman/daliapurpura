@@ -26,30 +26,8 @@
 
 <body>
     <!--JavaScript-->
-    <script src="../js/presupuesto.js">
-    </script>
-    <script src="../js/clases.js">
-    </script>
-    <script>
-        //definición de variables
-        let cantidadFotos = IngresarDato("Ingrese cantidad de Fotos", "NUMERO");
-        let cantidadVideos = IngresarDato("Ingrese cantidad de Fotos", "NUMERO");
-        let fechaDesde = IngresarDato("Ingrese Fecha desde del evento", "FECHA");
-        let fechaHasta = IngresarDato("Ingrese Hasta desde del evento", "FECHA");
-        let descripcionEvento = IngresarDato("Ingrese los datos y detalles del Evento",null);
-
-        //Construcción de objeto presupuesto
-        const miPresupuesto = new Presupuesto(fechaDesde, fechaHasta, cantidadFotos, cantidadVideos, descripcionEvento);
-
-        //invocación al metodo que calcula el importe del evento
-        miPresupuesto.ImporteFinal();
-
-        //Informamos al usuario el importe del presupuesto
-        alert("Su presupuesto es por un total de $:" + miPresupuesto.precio + " Muchas gracias por elegirnos")
-        
-        //Por consola imprimo todo el objeto
-        console.log(miPresupuesto);
-    </script>
+    <script src="../js/clases.js"> </script>
+    <script src="../js/clientes.js"> </script>
     <!--Comienzo Header-->
     <header>
         <!-- menu-->
@@ -98,10 +76,19 @@
     <main>
         <!-- sección de servicios de la productora -->
         <section class="container-xxl my-5 p-3">
-            <p class="h2 aleTitulos">PRESUPUESTO</p>
+            <p class="h2 aleTitulos">CLIENTE</p>
             <section class="container-xxl my-0 p-0">
             </section>
         </section>
+
+        <!-- script-->
+        <script>
+            let usuario = prompt("Ingrese su usuario:");
+            let contra = prompt("Ingrese su contraseña:");
+            login(usuario, contra)
+        </script>
+
+
     </main>
     <!--Comienzo MAIN-->
     <!-- Comienzo footer -->
