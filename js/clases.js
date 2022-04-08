@@ -151,6 +151,14 @@ class Cliente {
         this.cuit = 20222972303
         return (this)
     }
+    
+    findEventoByID(peventoID){
+        // Metodo que busca un determonado Id de evento
+        let listaEventos=new Array();
+        listaEventos = this.getEventosByCliente(this.clienteID) //Obtenemos la lista completa de eventos del cliente
+        const miEvento=listaEventos.find(miE=>miE.eventoID === peventoID) // busco en la lista el objeto con id igual al parametro de entrada    
+        return miEvento;
+    }
 
 }
 
@@ -188,4 +196,5 @@ class Evento {
         lista.push(new FechaEvento("22:20", "23:20", "Parque centenario", ""));
         return lista
     }
+
 }
