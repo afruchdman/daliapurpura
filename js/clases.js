@@ -1,6 +1,3 @@
-
-
-
 //Clase de presupuestos
 class Presupuesto {
     //constructor de Presupuestos
@@ -69,7 +66,7 @@ class Imagen {
     imagenID;
     fechaHora;
     duracion;
-    objeto;// este objeto seria la imagen o video en base64
+    objeto; // este objeto seria la imagen o video en base64
     descripcion;
     //Constructor de la clase
     constructor(pfechaHora, pduracion, pobjeto, pdescripcion) {
@@ -130,6 +127,7 @@ class Cliente {
 
     getEventosByCliente(pclienteID) {
         //Se recuperan los eventos del cliente según pclienteID
+        // El parametro pclienteID no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
         let lista = new Array();
         //para simular el retorno hago new hardcode, solo retorno un evento para el cliente        
         lista.push(new Evento(100500, "07/04/2022", "Ciudad de bs. as."));
@@ -138,19 +136,22 @@ class Cliente {
 
     getByCliente(pDNI) {
         //Se recuperan el cliente según DNI
+        // El parametro pDNI no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
         // retorno un cliente hardcodeado
         this.clienteID = 1;
-        this.nombreApellido ="Alejandro Fruchdman"
+        this.nombreApellido = "Alejandro Fruchdman"
         this.cuit = 20222972303
         this.eventos = this.getEventosByCliente(this.clienteID);
         return (this)
     }
-    
-    findEventoByID(peventoID){
+
+    findEventoByID(peventoID) {
         // Metodo que busca un determonado Id de evento
-        let listaEventos=new Array();
+        // El parametro peventoID no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
+
+        let listaEventos = new Array();
         listaEventos = this.getEventosByCliente(this.clienteID) //Obtenemos la lista completa de eventos del cliente
-        const miEvento=listaEventos.find(miE=>miE.eventoID === peventoID) // busco en la lista el objeto con id igual al parametro de entrada    
+        const miEvento = listaEventos.find(miE => miE.eventoID === peventoID) // busco en la lista el objeto con id igual al parametro de entrada    
         return miEvento;
     }
 
@@ -164,7 +165,7 @@ class Evento {
     locacion;
     cliente;
     fechas = new Array();
-    presupuestos = new Array();//Array para la colección de los presupuestos previos al evento.
+    presupuestos = new Array(); //Array para la colección de los presupuestos previos al evento.
 
     //Constructor
     constructor(pprecio, pfechaContratacion, plocacion) {
@@ -176,8 +177,10 @@ class Evento {
         this.presupuestos = this.getPresupuestosByEvento(this.eventoID)
         this.fechas = this.getFechasByEvento(this.eventoID)
     }
-    getPresupuestosByEvento(peventoId) {
+    getPresupuestosByEvento(peventoID) {
         //Se recuperan los presupuestos del evento según peventoID
+        // El parametro peventoIDID no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
+
         let lista = new Array();
         lista.push(new Presupuesto("01/01/2000", "02/01/2000", 50, 10, "Presupuesto primero de evento"));
         return lista;
@@ -185,6 +188,8 @@ class Evento {
     getFechasByEvento(peventoID) {
         let lista = new Array();
         //Se recuperan las fechas del evento según peventoID
+        // El parametro peventoID no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
+
         lista.push(new Fecha("21:00", "21:30", "el gran salon", "sin observacion"));
         lista.push(new Fecha("22:20", "24:00", "Otro salon", "lluvia todo ese dia"));
         lista.push(new Fecha("22:20", "23:20", "Parque centenario", "todo muy bien"));

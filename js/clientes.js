@@ -1,9 +1,30 @@
 // Variables y constante
 const eventoOnClick = "click";
+let arrayImagenes = new Array();
 recuperoEvento();
 
+// fucion para simular un dowload de imagen
+function download() {
+    var a = document.createElement("a");
+    a.href = "./imagenes", "Codesource_Logo.png";
+    a.setAttribute("download", "tusImagenes.zip");
+    a.click();
+}
 
 
+
+//Funcion para abrir las imagenes
+function cargarImagenes(parrayImagenes) {
+    let seccionImagenes = document.getElementById("seccionImagenes");
+    if (seccionImagenes.className == "container-xxl my-5 p-3") {
+        seccionImagenes.className = "visually-hidden-focusable"
+    } else {
+        seccionImagenes.className = "container-xxl my-5 p-3"
+        /// agrego evento al boton para cargar imagenes
+        document.getElementById("btnDescargaCompleta").addEventListener("click", download);
+
+    };
+}
 
 //Funcion para armar las coleciones de objetos de un evento ficticio
 function recuperoEvento() {
@@ -38,7 +59,6 @@ function login(pusuario, pcontrasenia) {
             return true
             //            recuperoEvento();
         }
-
     } else {
         return false
         //alert("ingrese usuario y contraseña por favor")
@@ -47,9 +67,9 @@ function login(pusuario, pcontrasenia) {
 
 //Funcion para cargar y mostarr evento
 function MostrarEvento(pCliente) {
-    
-    let contadorImagenes=0;
-    let msg = `Estimado/a Sr/a ${pCliente.nombreApellido} ` 
+
+    let contadorImagenes = 0;
+    let msg = `Estimado/a Sr/a ${pCliente.nombreApellido} `
     let seccionCliente = document.getElementById("seccionCliente");
 
     let article = document.createElement("article");
@@ -60,15 +80,16 @@ function MostrarEvento(pCliente) {
 
     //Inicio clico por  eventos
     pCliente.eventos.forEach(unevento => {
-    //todo va en un acordion
-        msg = `<div class='accordion' id='accordionExample'><div class='accordion-item'>  <h2 class='accordion-header' id='headingOne'>    <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'> Evento nro:      ${unevento.eventoID}    </button>  </h2>  <div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>    <div class='accordion-body'>Este evento se ha realizado en :${unevento.locacion}; con un precio de $ARG: ${unevento.precio} y con fecha de contratación: ${unevento.fechaContratacion}. con las siguientes fechas/locaciones:`
+        //todo va en un acordion
+        msg = `<div class='accordion' id='accordionExample'><div class='accordion-item'>  <h2 class='accordion-header' id='headingOne'>    <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='false' aria-controls='collapseOne'> Evento nro:      <strong>${unevento.eventoID}</strong>    </button>  </h2>  <div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>    <div class='accordion-body'>Este evento se ha realizado en :${unevento.locacion}; con un precio de $ARG: ${unevento.precio} y con fecha de contratación: ${unevento.fechaContratacion}. con las siguientes fechas/locaciones:`
 
         //Inicio clico por  fechas de evento
         unevento.fechas.forEach(unafecha => {
-            msg = msg + `\n`+ ` ${unafecha.fecha}/${unafecha.locacion} `
-            contadorImagenes=contadorImagenes + (unafecha.imagenes.length)
+            msg = msg + `<p>` + ` ${unafecha.fecha.getDate()}-${unafecha.fecha.getMonth()+1}-${unafecha.fecha.getFullYear()} en la siguiente locación: ${unafecha.locacion} ` + "</p>"
+            contadorImagenes = contadorImagenes + (unafecha.imagenes.length)
             //Inicio clico por Imagenes
             unafecha.imagenes.forEach(unaimagen => {
+                arrayImagenes.push(unaimagen.imagenID)
                 //msg = msg + "\n\t\t" + " con las siguientes imagenes: " + unaimagen.descripcion
 
             })
@@ -77,11 +98,16 @@ function MostrarEvento(pCliente) {
         //FIN clico por  fechas de evento
     })
     //FIN clico por  eventos
-    msg = msg + `con un total de <strong>${contadorImagenes} </strong>imagenes, para verlas haga click aqui</div></div></div></div>`
-    
+    msg = msg + `con un total de <strong>${contadorImagenes}</strong> imagenes, para verlas haga click <button type='button' class='btn btn-link' id='btnVerImagenes'>Aqui</button></div></div></div></div>`
+
+
     //Agrego el acordion
     let parrafo = document.createElement("p");
     parrafo.innerHTML = msg;
     seccionCliente.append(parrafo);
+
+    document.getElementById("btnVerImagenes").addEventListener("click", cargarImagenes);
+
+    // retorno de la funcion
     return msg
 }
