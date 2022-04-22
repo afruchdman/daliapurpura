@@ -25,31 +25,6 @@
 <!--comienzo de body-->
 
 <body>
-    <!--JavaScript-->
-    <script src="../js/presupuesto.js">
-    </script>
-    <script src="../js/clases.js">
-    </script>
-    <script>
-        //definición de variables
-        let cantidadFotos = IngresarDato("Ingrese cantidad de Fotos", "NUMERO");
-        let cantidadVideos = IngresarDato("Ingrese cantidad de Fotos", "NUMERO");
-        let fechaDesde = IngresarDato("Ingrese Fecha desde del evento", "FECHA");
-        let fechaHasta = IngresarDato("Ingrese Hasta desde del evento", "FECHA");
-        let descripcionEvento = IngresarDato("Ingrese los datos y detalles del Evento",null);
-
-        //Construcción de objeto presupuesto
-        const miPresupuesto = new Presupuesto(fechaDesde, fechaHasta, cantidadFotos, cantidadVideos, descripcionEvento);
-
-        //invocación al metodo que calcula el importe del evento
-        miPresupuesto.ImporteFinal();
-
-        //Informamos al usuario el importe del presupuesto
-        alert("Su presupuesto es por un total de $:" + miPresupuesto.precio + " Muchas gracias por elegirnos")
-        
-        //Por consola imprimo todo el objeto
-        console.log(miPresupuesto);
-    </script>
     <!--Comienzo Header-->
     <header>
         <!-- menu-->
@@ -82,7 +57,7 @@
                             <a class="nav-link" href="presupuestos.html">PRESUPUESTOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="clientes.html" >CLIENTES</a>
+                            <a class="nav-link" href="clientes.html">CLIENTES</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contacto.html">CONTACTENOS</a>
@@ -99,8 +74,52 @@
         <!-- sección de servicios de la productora -->
         <section class="container-xxl my-5 p-3">
             <p class="h2 aleTitulos">PRESUPUESTO</p>
-            <section class="container-xxl my-0 p-0">
-            </section>
+            <form id="formulario" action="">
+                <fieldset class="paddingRight container-lg my-5 p-3">
+
+                    <legend class="h2 aleTitulos">Ingrese información del presupuesto</legend>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Locación</label>
+                        <input id="inputLocacion" class="form-control" type="text" placeholder="Ingrese la hubicación del evento"
+                            aria-label="default input example"></div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Nombre del Evento</label><strong>*</strong>
+                        <input id="inputNombre" class="form-control" type="text" placeholder="Ingrese el nombre del evento"
+                            aria-label="default input example"></div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Descripción:</label>
+                        <textarea class="form-control" id="inputDescripcion" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Observaciones</label>
+                        <textarea class="form-control" id="inputObservacion" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Cantidad de Fotos a
+                            contratar</label><strong>*</strong>
+                        <input id="inputCantFotos" class="form-control" type="text" placeholder="Ingrese la cantidad de fotos del evento"
+                            aria-label="default input example"></div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Cantidad de Videos a
+                            contratar</label><strong>*</strong>
+                        <input id="inputCantVideos" class="form-control" type="text" placeholder="Ingrese la cantidad de videos del evento"
+                            aria-label="default input example"></div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Fecha Inicio Evento</label><strong>*</strong>
+                        <input id="inputFechaDesde" class="form-control" type="text" placeholder="Ingrese la Fecha tentetiva de inicio del evento"
+                            aria-label="default input example"></div>
+                    <div class="mb-3">
+                        <label  for="exampleFormControlInput1" class="form-label h4 aleTitulos">Fecha Fin evento</label>
+                        <input id="inputFechaHasta" class="form-control" type="text" placeholder="Ingrese la Fecha tentetiva de fin del evento"
+                            aria-label="default input example"></div>
+                </fieldset>
+                <div class="container-lg my-5 p-3">
+                    <!-- Boton para Limpiar -->
+                    <input class="btnContactoBorrar" type="submit" value="Borrar">
+                    <!-- Boton para submit -->
+                    <input class="btnContactoEnviar" type="submit" value="Enviar"></div>
+            </form>
         </section>
     </main>
     <!--Comienzo MAIN-->
@@ -162,6 +181,9 @@
         </footer>
         <!-- Javascript de Bootstrap local-->
         <script src="../bootstrap/js/bootstrap.js"></script>
+        <script src="../js/presupuesto.js"></script>
+        <script src="../js/clases.js"></script>
+
 </body>
 
 </html>

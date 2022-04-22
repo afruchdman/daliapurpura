@@ -1,22 +1,22 @@
 //Clase de presupuestos
 class Presupuesto {
     //constructor de Presupuestos
-    constructor(pfechaDesde, pfechaHasta, pcantidadFotos, pcantidadVideos, pdescripcion) {
-        this.fechaDesde = null;
-        this.fechaHasta = null;
+    constructor(pfechaDesde, pfechaHasta, pcantidadFotos, pcantidadVideos, pdescripcion,pobservaciones,pnombre,plocacion) {
         this.fechaContrato = null;
         this.fechaPresupuesto = Date.now;
         this.locacion = null;
         this.precio = null;
         this.nombre = null;
         this.descripcion = pdescripcion
-        this.observaciones = null;
+        this.observaciones = pobservaciones;
         this.cantidadFotos = pcantidadFotos;
         this.cantidadVideos = pcantidadVideos;
         this.tipo = null;
         this.fechaDesde = pfechaDesde;
         this.fechaHasta = pfechaHasta;
         this.vendido = false;
+        this.nombre = pnombre;
+        this.locacion = plocacion;
     };
 
     //Metodo que calcula el importe Bruto del evento, segun cantidad de fotos, de videos
@@ -53,6 +53,7 @@ class Presupuesto {
     ImporteFinal() {
         this.precioBruto();
         this.precio = this.precio * 1.21;
+        return this.precio;
     }
 
     //Metodo para marcar como vendido el evento
@@ -79,7 +80,7 @@ class Imagen {
 
 }
 
-//fechaEvento
+//fecha
 class Fecha {
     fecha;
     horaDesde;
@@ -117,13 +118,18 @@ class Cliente {
     eventos = new Array(); // array para la colección de los eventos del cliente.
 
     //Constructor de la clase
-    constructor(pNombreApellido, pcuit) {
-        this.clienteID = Math.trunc(Math.random() * 10000);
-        this.NombreApellido = pNombreApellido;
-        this.cuit = pcuit;
-        // Recupero eventos del cliente
-        this.eventos = this.getEventosByCliente(this.clienteID);
+    constructor(pusuario) {
+        return this.getByCliente(pusuario)
     }
+
+    //Constructor de la clase
+    // constructor(pNombreApellido, pcuit) {
+    //     this.clienteID = Math.trunc(Math.random() * 10000);
+    //     this.NombreApellido = pNombreApellido;
+    //     this.cuit = pcuit;
+    //     // Recupero eventos del cliente
+    //     this.eventos = this.getEventosByCliente(this.clienteID);
+    // }
 
     getEventosByCliente(pclienteID) {
         //Se recuperan los eventos del cliente según pclienteID
@@ -138,11 +144,14 @@ class Cliente {
         //Se recuperan el cliente según DNI
         // El parametro pDNI no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
         // retorno un cliente hardcodeado
-        this.clienteID = 1;
-        this.nombreApellido = "Alejandro Fruchdman"
-        this.cuit = 20222972303
-        this.eventos = this.getEventosByCliente(this.clienteID);
-        return (this)
+
+
+        // this.clienteID = 1;
+        // this.nombreApellido = "Alejandro Fruchdman"
+        // this.cuit = 20222972303
+        // this.eventos = this.getEventosByCliente(this.clienteID);
+        
+        return (JSON.parse(localStorage.getItem("cliente")));
     }
 
     findEventoByID(peventoID) {
@@ -163,7 +172,6 @@ class Evento {
     precio;
     fechaContratacion;
     locacion;
-    cliente;
     fechas = new Array();
     presupuestos = new Array(); //Array para la colección de los presupuestos previos al evento.
 
