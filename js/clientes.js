@@ -136,7 +136,7 @@ function mostrarEvento(pCliente) {
             //FIN clico por Imagenes
         })
         //FIN clico por  fechas de evento
-        msg = msg + `con un total de <strong>${contadorImagenes}</strong> imagenes, para verlas haga click <button type='button' class='btn btn-link' id='btnVerImagenes'>Aqui</button></div></div></div></div>`
+        msg = msg + `con un total de <strong>${contadorImagenes}</strong> imagenes, para verlas haga click <button type='button' class='btn btn-link' id='btnVerImagenes${unevento.eventoID}' onclick=cargarImagenes()>Aqui</button></div></div></div></div>`
         //Agrego el acordion
         parrafo = document.createElement("p");
         parrafo.innerHTML = msg;
@@ -145,7 +145,6 @@ function mostrarEvento(pCliente) {
         })
     //FIN clico por  eventos
     // retorno de la funcion
-    document.getElementById("btnVerImagenes").addEventListener("click", cargarImagenes);
     
     return msg
 }
