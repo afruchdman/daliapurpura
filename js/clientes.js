@@ -1,9 +1,39 @@
 // Variables y constante
+let id_token = "";
 const eventoOnClick = "click";
 let arrayImagenes = new Array();
 recuperoEvento();
 
-// fucion para simular un dowload de imagen
+// function loginOath() {
+//     if (id_token = "") {
+//         let miDiv = document.getElementById("divOnSigIn")
+//         miDiv.style = style = "display: inline;"
+//         onSignIn()
+//     }else {onSignOut()}
+// }
+
+// function onSignIn(googleUser) {
+//     try {
+//         var profile = googleUser.getBasicProfile();
+//         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+//         console.log('Name: ' + profile.getName());
+//         console.log('Image URL: ' + profile.getImageUrl());
+//         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+//         id_token = googleUser.getAuthResponse().id_token;
+//         console.log(id_token);
+//     } catch {}
+// }
+
+// function onSignOut(googleUser) {
+//     id_token = ""
+//     var auth2 = api.auth2.getAuthInstance();
+//     auth2.signOut().then(function () {
+//         console.log("User Sign Out");
+//     });
+// }
+
+
+// funcion para simular un dowload de imagen
 function download() {
     var a = document.createElement("a");
     a.href = "./imagenes", "Codesource_Logo.png";
@@ -56,7 +86,6 @@ function recuperoEvento() {
                             contra = resultado.value;
 
                             if (login(usuario, contra)) {
-                                clienteFactory();
                                 mostrarEvento(new Cliente(usuario));
                             } else {
                                 alert("ingrese usuario y contraseña por favor")
@@ -64,7 +93,7 @@ function recuperoEvento() {
                                 //     icon: 'error',
                                 //     text: 'ingrese NO permitido!',
                                 //   })
-                   }
+                            }
                         }
                     });
 
@@ -98,7 +127,7 @@ function login(pusuario, pcontrasenia) {
                 alert("Ingreso no permitido")
             }
         }
-         return( pusuario == dbuser || pcontrasenia == dbpass ?  true : false)
+        return (pusuario == dbuser || pcontrasenia == dbpass ? true : false)
     } else {
         return false
         //alert("ingrese usuario y contraseña por favor")
@@ -141,166 +170,10 @@ function mostrarEvento(pCliente) {
         parrafo = document.createElement("p");
         parrafo.innerHTML = msg;
         seccionCliente.append(parrafo);
-        
-        })
+
+    })
     //FIN clico por  eventos
     // retorno de la funcion
-    
-    return msg
-}
 
-function clienteFactory() {
-    const c = {
-        clienteID: "1",
-        nombreApellido: "Alejandro Aarón Fruchdman",
-        cuit: "20222972303",
-        eventos: [{
-            eventoID: "11",
-            precio: "55458",
-            fechaContratacion: "16/4/2020",
-            locacion: "Ciudad de Mexico",
-            fechas: [{
-                fecha: "15/06/2021",
-                horaDesde: "20:00",
-                horaHasta: "23:59",
-                locacion: "locacion de esta fecha",
-                observacion: "observacion de fehca",
-                imagenes: [{
-                    imagenID: 4545,
-                    fechaHora: "15:02",
-                    duracion: "0",
-                    objeto: "objeto",
-                    descripcion: "descripcion de la foto"
-                }, {
-                    imagenID: 4546,
-                    fechaHora: "15:08",
-                    duracion: "120",
-                    objeto: "objeto",
-                    descripcion: "descripcion del video"
-                }]
-            }],
-            presupuestos: [{
-                fechaDesde: "02/05/2022",
-                fechaHasta: "05/07/2022",
-                fechaContrato: "01/06/2021",
-                fechaPresupuesto: "31/05/2021",
-                locacion: "Salones varios del cliente",
-                precio: "500000",
-                nombre: "Presupuesto para Ale",
-                descripcion: "Prueba de evento",
-                observaciones: "sin observaciones",
-                cantidadFotos: "50",
-                cantidadVideos: "200",
-                tipo: "social",
-                fechaDesde: "01/01/2002",
-                fechaHasta: "31/05/2022",
-                vendido: "false"
-            }]
-        }, {
-            eventoID: "12",
-            precio: "120222",
-            fechaContratacion: "1/4/2021",
-            locacion: "Ciudad de Bs.As",
-            fechas: [{
-                fecha: "15/06/2021",
-                horaDesde: "20:00",
-                horaHasta: "23:59",
-                locacion: "locacion de esta fecha",
-                observacion: "observacion de fehca",
-                imagenes: [{
-                    imagenID: 4545,
-                    fechaHora: "15:02",
-                    duracion: "0",
-                    objeto: "objeto",
-                    descripcion: "descripcion de la foto"
-                }, {
-                    imagenID: 4546,
-                    fechaHora: "15:08",
-                    duracion: "120",
-                    objeto: "objeto",
-                    descripcion: "descripcion del video"
-                }]
-            }, {
-                fecha: "10/07/2021",
-                horaDesde: "22:00",
-                horaHasta: "23:09",
-                locacion: "salon el loco",
-                observacion: "sin observacion de fehca",
-                imagenes: [{
-                    imagenID: 4565,
-                    fechaHora: "12:02",
-                    duracion: "0",
-                    objeto: "objeto",
-                    descripcion: "descripcion de la foto"
-                }, {
-                    imagenID: 4566,
-                    fechaHora: "15:18",
-                    duracion: "1200",
-                    objeto: "objeto",
-                    descripcion: "descripcion del video"
-                }, {
-                    imagenID: 4567,
-                    fechaHora: "15:19",
-                    duracion: "1200",
-                    objeto: "objeto",
-                    descripcion: "descripcion del video"
-                }, {
-                    imagenID: 4568,
-                    fechaHora: "15:20",
-                    duracion: "1200",
-                    objeto: "objeto",
-                    descripcion: "descripcion del video"
-                }, {
-                    imagenID: 4569,
-                    fechaHora: "15:21",
-                    duracion: "1200",
-                    objeto: "objeto",
-                    descripcion: "descripcion del video"
-                }, {
-                    imagenID: 4570,
-                    fechaHora: "15:00",
-                    duracion: "1200",
-                    objeto: "objeto",
-                    descripcion: "descripcion del video"
-                }]
-            }],
-            presupuestos: [{
-                fechaDesde: "02/05/2022",
-                fechaHasta: "05/07/2022",
-                fechaContrato: "01/06/2021",
-                fechaPresupuesto: "31/05/2021",
-                locacion: "Salones varios del cliente",
-                precio: "500000",
-                nombre: "Presupuesto para Ale",
-                descripcion: "Prueba de evento",
-                observaciones: "sin observaciones",
-                cantidadFotos: "50",
-                cantidadVideos: "200",
-                tipo: "social",
-                fechaDesde: "01/01/2002",
-                fechaHasta: "31/05/2022",
-                vendido: "false"
-            }, {
-                fechaDesde: "03/05/2022",
-                fechaHasta: "08/07/2022",
-                fechaContrato: "09/08/2021",
-                fechaPresupuesto: "31/05/2021",
-                locacion: "Salones varios del cliente",
-                precio: "500001",
-                nombre: "Presupuesto para alguien",
-                descripcion: "Prueba de evento 2",
-                observaciones: "sin observaciones",
-                cantidadFotos: "50",
-                cantidadVideos: "200",
-                tipo: "laboral",
-                fechaDesde: "01/01/2002",
-                fechaHasta: "31/05/2022",
-                vendido: "true"
-            }]
-        }]
-    }
-    //convierto a cliente objeto a cliente json
-    const clienteJSON = JSON.stringify(c)
-    //guardo el clienteJson en localStorege
-    localStorage.setItem("cliente", clienteJSON);
+    return msg
 }

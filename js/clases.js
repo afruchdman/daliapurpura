@@ -1,23 +1,36 @@
+clienteFactory()
+
+//Funcion que carga el json de clientes y eventos para pagina de clientes
+function clienteFactory() {
+    fetch("../js/eventos.json")
+        .then((res) => res.json())
+        .then((data) => {
+            localStorage.setItem("cliente", JSON.stringify(data));
+        }).catch((error) => {
+            console.log(error);
+        });
+}
+
 //Clase de presupuestos
 class Presupuesto {
-fechaContrato;
-fechaPresupuesto;
-locacion;
-precio;
-nombre;
-descripcion;
-observaciones;
-cantidadFotos;
-cantidadVideos;
-tipo;
-fechaDesde;
-fechaHasta;
-vendido;
-nombre;
-locacion;
+    fechaContrato;
+    fechaPresupuesto;
+    locacion;
+    precio;
+    nombre;
+    descripcion;
+    observaciones;
+    cantidadFotos;
+    cantidadVideos;
+    tipo;
+    fechaDesde;
+    fechaHasta;
+    vendido;
+    nombre;
+    locacion;
 
     //constructor de Presupuestos
-    constructor(pfechaDesde, pfechaHasta, pcantidadFotos, pcantidadVideos, pdescripcion,pobservaciones,pnombre,plocacion) {
+    constructor(pfechaDesde, pfechaHasta, pcantidadFotos, pcantidadVideos, pdescripcion, pobservaciones, pnombre, plocacion) {
         this.fechaContrato = null;
         this.fechaPresupuesto = Date.now;
         this.locacion = null;
@@ -166,8 +179,16 @@ class Cliente {
         // this.nombreApellido = "Alejandro Fruchdman"
         // this.cuit = 20222972303
         // this.eventos = this.getEventosByCliente(this.clienteID);
-        
-        return (JSON.parse(localStorage.getItem("cliente")));
+
+        const c = JSON.parse(localStorage.getItem("cliente"));
+        if (c == null) {
+            console.log("entro aca")
+            setTimeout(() => {
+                clienteFactory();
+                c = JSON.parse(localStorage.getItem("cliente"));
+            }, 5000)
+        }
+        return c ? c : null
     }
 
     findEventoByID(peventoID) {
