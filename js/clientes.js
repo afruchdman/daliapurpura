@@ -28,17 +28,61 @@ function cargarImagenes() {
 
 //Funcion para armar las coleciones de objetos de un evento ficticio
 function recuperoEvento() {
+    let usuario = ""
+    let contra = ""
 
-    let usuario = prompt("Ingrese su usuario:");
-    let contra = prompt("Ingrese su contraseña:");
+    Swal
+        .fire({
+            title: "Ingrese su usuario",
+            input: "text",
+            showCancelButton: true,
+            confirmButtonText: "Guardar",
+            cancelButtonText: "Cancelar",
+        })
+        .then(resultado => {
+            if (resultado.value) {
+                usuario = resultado.value;
+                /// pido contraseña
+                Swal
+                    .fire({
+                        title: "Ingrese su contraseña",
+                        input: "text",
+                        showCancelButton: true,
+                        confirmButtonText: "Guardar",
+                        cancelButtonText: "Cancelar",
+                    })
+                    .then(resultado => {
+                        if (resultado.value) {
+                            contra = resultado.value;
 
-    if (login(usuario, contra)) {
-        clienteFactory();
-        MostrarEvento(new Cliente(usuario));
-    } else {
-        alert("ingrese usuario y contraseña por favor")
-    }
+                            if (login(usuario, contra)) {
+                                clienteFactory();
+                                mostrarEvento(new Cliente(usuario));
+                            } else {
+                                alert("ingrese usuario y contraseña por favor")
+                                // Swal.fire({
+                                //     icon: 'error',
+                                //     text: 'ingrese NO permitido!',
+                                //   })
+                   }
+                        }
+                    });
+
+            }
+        });
 }
+// function recuperoEvento() {
+
+//     let usuario = prompt("Ingrese su usuario:");
+//     let contra = prompt("Ingrese su contraseña:");
+
+//     if (login(usuario, contra)) {
+//         clienteFactory();
+//         MostrarEvento(new Cliente(usuario));
+//     } else {
+//         alert("ingrese usuario y contraseña por favor")
+//     }
+// }
 
 function login(pusuario, pcontrasenia) {
     let dbuser = 'a';
@@ -54,10 +98,7 @@ function login(pusuario, pcontrasenia) {
                 alert("Ingreso no permitido")
             }
         }
-        if (pusuario == dbuser || pcontrasenia == dbpass) {
-            return true
-            //            recuperoEvento();
-        }
+         return( pusuario == dbuser || pcontrasenia == dbpass ?  true : false)
     } else {
         return false
         //alert("ingrese usuario y contraseña por favor")
@@ -65,7 +106,7 @@ function login(pusuario, pcontrasenia) {
 }
 
 //Funcion para cargar y mostarr evento
-function MostrarEvento(pCliente) {
+function mostrarEvento(pCliente) {
     let parrafo;
     let contadorImagenes = 0;
     let msg = `Estimado/a Sr/a ${pCliente.nombreApellido} `

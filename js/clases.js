@@ -1,5 +1,21 @@
 //Clase de presupuestos
 class Presupuesto {
+fechaContrato;
+fechaPresupuesto;
+locacion;
+precio;
+nombre;
+descripcion;
+observaciones;
+cantidadFotos;
+cantidadVideos;
+tipo;
+fechaDesde;
+fechaHasta;
+vendido;
+nombre;
+locacion;
+
     //constructor de Presupuestos
     constructor(pfechaDesde, pfechaHasta, pcantidadFotos, pcantidadVideos, pdescripcion,pobservaciones,pnombre,plocacion) {
         this.fechaContrato = null;
@@ -7,7 +23,7 @@ class Presupuesto {
         this.locacion = null;
         this.precio = null;
         this.nombre = null;
-        this.descripcion = pdescripcion
+        this.descripcion = pdescripcion;
         this.observaciones = pobservaciones;
         this.cantidadFotos = pcantidadFotos;
         this.cantidadVideos = pcantidadVideos;

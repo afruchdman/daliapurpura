@@ -138,6 +138,16 @@ a {
     width: 100%;
     height: 100%;
 }
+.warningObligatorioOn{
+    display:inline;
+    /*visibility:visible !important;*/
+    color: red;
+}
+.warningObligatorioOff{
+    display:none;
+    /*visibility:hidden !important;*/
+    color: black
+}
 /*********************** FIN - CLASES*******************************/
 
 /********************** GRIDS POR AREAS *********************/

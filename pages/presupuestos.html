@@ -20,6 +20,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Estilos propios -->
     <link rel="stylesheet" href="../css/destino.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- inicio datepiker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <!-- fin datepiker -->
+
 </head>
 <!-- fin de head-->
 <!--comienzo de body-->
@@ -81,12 +88,14 @@
 
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Locación</label>
-                        <input id="inputLocacion" class="form-control" type="text" placeholder="Ingrese la hubicación del evento"
-                            aria-label="default input example"></div>
+                        <input id="inputLocacion" class="form-control" type="text"
+                            placeholder="Ingrese la hubicación del evento" aria-label="default input example"></div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Nombre del Evento</label><strong>*</strong>
-                        <input id="inputNombre" class="form-control" type="text" placeholder="Ingrese el nombre del evento"
-                            aria-label="default input example"></div>
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Nombre del
+                            Evento</label><strong style="color: red;">*</strong><span id="WarningInputNombre"
+                            class="warningObligatorioOff"> El Nombre de evento es obligatorio !!</span>
+                        <input id="inputNombre" class="form-control" type="text"
+                            placeholder="Ingrese el nombre del evento" aria-label="default input example"></div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Descripción:</label>
                         <textarea class="form-control" id="inputDescripcion" rows="3"></textarea>
@@ -97,26 +106,34 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Cantidad de Fotos a
-                            contratar</label><strong>*</strong>
-                        <input id="inputCantFotos" class="form-control" type="text" placeholder="Ingrese la cantidad de fotos del evento"
-                            aria-label="default input example"></div>
+                            contratar</label><strong style="color: red;">*</strong><span id="WarningInputCantFotos"
+                            class="warningObligatorioOff"> La cantidad de Fotos es obligatorio !!</span>
+                        <input id="inputCantFotos" class="form-control" type="text"
+                            placeholder="Ingrese la cantidad de fotos del evento" aria-label="default input example">
+                    </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Cantidad de Videos a
-                            contratar</label><strong>*</strong>
-                        <input id="inputCantVideos" class="form-control" type="text" placeholder="Ingrese la cantidad de videos del evento"
+                            contratar</label><strong style="color: red;">*</strong><span id="WarningInputCantVideos"
+                            class="warningObligatorioOff"> La cantidad de videos es obligatorio !!</span>
+                        <input id="inputCantVideos" class="form-control" type="text"
+                            placeholder="Ingrese la cantidad de videos del evento" aria-label="default input example">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Fecha Inicio
+                            Evento</label><strong style="color: red;">*</strong><span id="WarningInputFechaDesde"
+                            class="warningObligatorioOff"> La fecha desde es obligatorio !!</span>
+                        <input id="inputFechaDesde" class="form-control" type="text"
+                            placeholder="Ingrese la Fecha tentetiva de inicio del evento"
                             aria-label="default input example"></div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Fecha Inicio Evento</label><strong>*</strong>
-                        <input id="inputFechaDesde" class="form-control" type="text" placeholder="Ingrese la Fecha tentetiva de inicio del evento"
-                            aria-label="default input example"></div>
-                    <div class="mb-3">
-                        <label  for="exampleFormControlInput1" class="form-label h4 aleTitulos">Fecha Fin evento</label>
-                        <input id="inputFechaHasta" class="form-control" type="text" placeholder="Ingrese la Fecha tentetiva de fin del evento"
+                        <label for="exampleFormControlInput1" class="form-label h4 aleTitulos">Fecha Fin evento</label>
+                        <input id="inputFechaHasta" class="form-control" type="text"
+                            placeholder="Ingrese la Fecha tentetiva de fin del evento"
                             aria-label="default input example"></div>
                 </fieldset>
                 <div class="container-lg my-5 p-3">
                     <!-- Boton para Limpiar -->
-                    <input class="btnContactoBorrar" type="submit" value="Borrar">
+                    <input class="btnContactoBorrar" type="reset" value="Borrar">
                     <!-- Boton para submit -->
                     <input class="btnContactoEnviar" type="submit" value="Enviar"></div>
             </form>
@@ -181,6 +198,8 @@
         </footer>
         <!-- Javascript de Bootstrap local-->
         <script src="../bootstrap/js/bootstrap.js"></script>
+        <!-- Libreria sweet Alert-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../js/presupuesto.js"></script>
         <script src="../js/clases.js"></script>
 
