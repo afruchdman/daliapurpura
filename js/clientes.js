@@ -86,6 +86,8 @@ function recuperoEvento() {
                             contra = resultado.value;
 
                             if (login(usuario, contra)) {
+                                clienteFactory()
+
                                 mostrarEvento(new Cliente(usuario));
                             } else {
                                 alert("ingrese usuario y contraseña por favor")

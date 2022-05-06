@@ -1,8 +1,7 @@
-clienteFactory()
 
 //Funcion que carga el json de clientes y eventos para pagina de clientes
-function clienteFactory() {
-    fetch("../js/eventos.json")
+async function clienteFactory() {
+    await fetch("../js/eventos.json")
         .then((res) => res.json())
         .then((data) => {
             localStorage.setItem("cliente", JSON.stringify(data));
