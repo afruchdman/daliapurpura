@@ -150,15 +150,6 @@ class Cliente {
         return this.getByCliente(pusuario)
     }
 
-    //Constructor de la clase
-    // constructor(pNombreApellido, pcuit) {
-    //     this.clienteID = Math.trunc(Math.random() * 10000);
-    //     this.NombreApellido = pNombreApellido;
-    //     this.cuit = pcuit;
-    //     // Recupero eventos del cliente
-    //     this.eventos = this.getEventosByCliente(this.clienteID);
-    // }
-
     getEventosByCliente(pclienteID) {
         //Se recuperan los eventos del cliente según pclienteID
         // El parametro pclienteID no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
@@ -172,12 +163,6 @@ class Cliente {
         //Se recuperan el cliente según DNI
         // El parametro pDNI no lo utilizo aún, cuando tenga el reposotorio buscao por este dato
         // retorno un cliente hardcodeado
-
-
-        // this.clienteID = 1;
-        // this.nombreApellido = "Alejandro Fruchdman"
-        // this.cuit = 20222972303
-        // this.eventos = this.getEventosByCliente(this.clienteID);
 
         const c = JSON.parse(localStorage.getItem("cliente"));
         if (c == null) {

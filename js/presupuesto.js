@@ -83,8 +83,6 @@ function presupuestar(form) {
     const miPresupuesto = new Presupuesto(form.inputFechaDesde.value, form.inputFechaHasta.value, form.inputCantFotos.value, form.inputCantVideos.value, form.inputDescripcion.value, form.inputObservacion.value, form.inputNombre.value, form.inputLocacion.value)
     let miPrecio = miPresupuesto.ImporteFinal()
 
-    //alert(`Gracias por su interes, el presupuesto tiene un valor de $ARS${miPrecio}!!`)
-
     //convierto a cliente objeto a cliente json
     const miPresupuestoJSON = JSON.stringify(miPresupuesto)
     //guardo el clienteJson en localStorege

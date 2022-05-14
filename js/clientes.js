@@ -4,34 +4,6 @@ const eventoOnClick = "click";
 let arrayImagenes = new Array();
 recuperoEvento();
 
-// function loginOath() {
-//     if (id_token = "") {
-//         let miDiv = document.getElementById("divOnSigIn")
-//         miDiv.style = style = "display: inline;"
-//         onSignIn()
-//     }else {onSignOut()}
-// }
-
-// function onSignIn(googleUser) {
-//     try {
-//         var profile = googleUser.getBasicProfile();
-//         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-//         console.log('Name: ' + profile.getName());
-//         console.log('Image URL: ' + profile.getImageUrl());
-//         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-//         id_token = googleUser.getAuthResponse().id_token;
-//         console.log(id_token);
-//     } catch {}
-// }
-
-// function onSignOut(googleUser) {
-//     id_token = ""
-//     var auth2 = api.auth2.getAuthInstance();
-//     auth2.signOut().then(function () {
-//         console.log("User Sign Out");
-//     });
-// }
-
 
 // funcion para simular un dowload de imagen
 function download() {
@@ -91,10 +63,6 @@ function recuperoEvento() {
                                 mostrarEvento(new Cliente(usuario));
                             } else {
                                 alert("ingrese usuario y contraseña por favor")
-                                // Swal.fire({
-                                //     icon: 'error',
-                                //     text: 'ingrese NO permitido!',
-                                //   })
                             }
                         }
                     });
@@ -102,18 +70,6 @@ function recuperoEvento() {
             }
         });
 }
-// function recuperoEvento() {
-
-//     let usuario = prompt("Ingrese su usuario:");
-//     let contra = prompt("Ingrese su contraseña:");
-
-//     if (login(usuario, contra)) {
-//         clienteFactory();
-//         MostrarEvento(new Cliente(usuario));
-//     } else {
-//         alert("ingrese usuario y contraseña por favor")
-//     }
-// }
 
 function login(pusuario, pcontrasenia) {
     let dbuser = 'a';
@@ -132,7 +88,6 @@ function login(pusuario, pcontrasenia) {
         return (pusuario == dbuser || pcontrasenia == dbpass ? true : false)
     } else {
         return false
-        //alert("ingrese usuario y contraseña por favor")
     }
 }
 
@@ -161,7 +116,6 @@ function mostrarEvento(pCliente) {
             //Inicio clico por Imagenes
             unafecha.imagenes.forEach(unaimagen => {
                 arrayImagenes.push(unaimagen.imagenID)
-                //msg = msg + "\n\t\t" + " con las siguientes imagenes: " + unaimagen.descripcion
 
             })
             //FIN clico por Imagenes
